@@ -1,0 +1,67 @@
+/********** Base styles **********/
+body {
+  font-family: Helvetica, sans-serrif;
+}
+h1 {
+  margin-bottom: 15px;
+}
+
+p {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+.center {
+	text-align: center;
+}
+.box {
+  border: 3px solid black;
+  background: #d8d8d8;
+  margin-top: 1em;
+  padding: 5px;
+  position: relative;
+}
+
+.title {
+  font-weight: 700;
+  border-bottom: 3px solid #000;
+  border-left: 3px solid #000;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 7em;
+
+}
+.description {
+  margin-top: 3em;
+}
+.ckn{
+  background: pink;
+}
+.beef {
+  background: red;
+  color: white;
+}
+.sushi {
+  background: yellow;
+}
+
+/********** Large devices only **********/
+@media (min-width: 992px) {
+
+}
+/********** Medium devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+
+

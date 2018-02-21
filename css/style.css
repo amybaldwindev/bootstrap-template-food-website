@@ -16,9 +16,7 @@ p {
   margin-right: auto;
   width: 80%;
 }
-.center {
-	text-align: center;
-}
+
 .box {
   border: 3px solid black;
   background: #d8d8d8;
@@ -29,7 +27,7 @@ p {
 
 .title {
   font-weight: 700;
-  text-align: center;
+ 
 }
 .description {
   margin-top: 1.2em;
@@ -40,13 +38,18 @@ p {
   border-left: 1px solid #000;
 }
 .nav-link {
+  background: #d8d8d8;
   border-bottom: 1px solid #000;
+  opacity: .9;
+ 
 }
-
 
 
 /********** Large devices only **********/
 @media (min-width: 992px) {
+  .navbar-collapse {
+    border: none;
+  }
 
 }
 /********** Medium devices only **********/

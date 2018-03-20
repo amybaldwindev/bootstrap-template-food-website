@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  [...], // ***** <---- TODO: STEP 1: Substitute [...] ******
+  buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
   true); // Explicitely setting the flag to get JSON from server processed into an object literal
 });
 // *** finish **
@@ -103,6 +103,8 @@ function buildAndShowHomeHTML (categories) {
       // variable's name implies it expects.
       // var chosenCategoryShortName = ....
 
+      var chosenCategoryShortName = chooseRandomCategory(categories);
+
 
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
       // chosen category from STEP 2. Use existing insertProperty function for that purpose.
@@ -112,10 +114,14 @@ function buildAndShowHomeHTML (categories) {
       // being passed into the $dc.loadMenuItems function. Think about what that argument needs
       // to look like. For example, a valid call would look something like this:
       // $dc.loadMenuItems('L')
+
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
       //
       // var homeHtmlToInsertIntoMainPage = ....
+
+      //ab: step 3 I'm stuck, I've changed the home-snippet to grab the randomCategoryShortName, but am not sure
+      //where to apply the inserthtml.
 
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page

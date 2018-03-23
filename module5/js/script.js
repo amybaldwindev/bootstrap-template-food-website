@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  [...], // ***** <---- TODO: STEP 1: Substitute [...] ******
+  buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
   true); // Explicitely setting the flag to get JSON from server processed into an object literal
 });
 // *** finish **
@@ -104,6 +104,11 @@ function buildAndShowHomeHTML (categories) {
       // var chosenCategoryShortName = ....
 
 
+
+     var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
+     
+     var homeHtmlToInsertIntoMainPage = document.querySelector("#main-content").innerHTML = homeHtml;
+    
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
       // chosen category from STEP 2. Use existing insertProperty function for that purpose.
       // Look through this code for an example of how to do use the insertProperty function.
@@ -112,10 +117,17 @@ function buildAndShowHomeHTML (categories) {
       // being passed into the $dc.loadMenuItems function. Think about what that argument needs
       // to look like. For example, a valid call would look something like this:
       // $dc.loadMenuItems('L')
+
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
-      //
-      // var homeHtmlToInsertIntoMainPage = ....
+
+      document.querySelector("#specials-tile").addEventListener("click", function(){
+        $ajaxUtils.sendGetRequest(
+          menuItemsUrl + chosenCategoryShortName,
+          buildAndShowMenuItemsHTML);
+      })
+        
+
 
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
@@ -265,6 +277,7 @@ function buildMenuItemsViewHtml(categoryMenuItems,
     var html = menuItemHtml;
     html =
       insertProperty(html, "short_name", menuItems[i].short_name);
+
     html =
       insertProperty(html,
                      "catShortName",

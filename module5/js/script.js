@@ -103,9 +103,12 @@ function buildAndShowHomeHTML (categories) {
       // variable's name implies it expects.
       // var chosenCategoryShortName = ....
 
-      var chosenCategoryShortName = chooseRandomCategory(categories);
 
 
+     var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
+     
+     var homeHtmlToInsertIntoMainPage = document.querySelector("#main-content").innerHTML = homeHtml;
+    
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
       // chosen category from STEP 2. Use existing insertProperty function for that purpose.
       // Look through this code for an example of how to do use the insertProperty function.
@@ -117,11 +120,14 @@ function buildAndShowHomeHTML (categories) {
 
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
-      //
-      // var homeHtmlToInsertIntoMainPage = ....
 
-      //ab: step 3 I'm stuck, I've changed the home-snippet to grab the randomCategoryShortName, but am not sure
-      //where to apply the inserthtml.
+      document.querySelector("#specials-tile").addEventListener("click", function(){
+        $ajaxUtils.sendGetRequest(
+          menuItemsUrl + chosenCategoryShortName,
+          buildAndShowMenuItemsHTML);
+      })
+        
+
 
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
@@ -271,6 +277,7 @@ function buildMenuItemsViewHtml(categoryMenuItems,
     var html = menuItemHtml;
     html =
       insertProperty(html, "short_name", menuItems[i].short_name);
+
     html =
       insertProperty(html,
                      "catShortName",
